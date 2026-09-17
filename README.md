@@ -1,2 +1,2 @@
 # InfinityCube
-A interactive 3D infinity cube simulator
+An interactive 3D infinity cube simulator
