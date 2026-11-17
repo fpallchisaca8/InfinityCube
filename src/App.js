@@ -19,6 +19,7 @@ function App() {
   
   return (
     <div className="App">
+      <button className="rotate-button">Rotate</button>
       <Canvas camera={{ position: [5, 5, 10], fov: 30 }}> 
         <OrbitControls enableZoom={false} enablePan={false} /> 
         <ambientLight intensity={2} />
@@ -29,7 +30,6 @@ function App() {
     </div>
   )
 }
-/*
 
 const movements = {
   CUBE_A: {
@@ -56,14 +56,13 @@ const movements = {
     }
   }
 }
-*/
 
 function InfinityCube() {
   var cubeRefs = useRef([]);
   var groupRef = useRef();
 
   useEffect(() => {
-    if (cubeRefs.current[7]|| cubeRefs.current[8]) {
+    if (cubeRefs.current[7] || cubeRefs.current[8]) {
       animate(
         cubeRefs.current[7].rotation,
         { z: -Math.PI }, // 180 degrees in radians
@@ -147,7 +146,7 @@ function Cube ({id, position, cubeRef} ) {
  )
 }
 
-
+//how to rotate based of on the cube's position in the group?
 function rotateCube(meshCube) {
 
 

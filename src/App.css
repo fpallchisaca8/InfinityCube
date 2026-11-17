@@ -4,3 +4,10 @@
   height: 100%;
   width: 100%;
 }
+
+.rotate-button {
+  position: relative;
+  left: 90%;
+  top: 90%;
+  color: rgb(121, 88, 241);
+}
