@@ -19,14 +19,28 @@ function App() {
   
   return (
     <div className="App">
-      <button className="rotate-button">Rotate</button>
-      <Canvas camera={{ position: [5, 5, 10], fov: 30 }}> 
-        <OrbitControls enableZoom={false} enablePan={false} /> 
+      <aside className='sidebar'>
+        <header>
+          <h1>Controls</h1>
+        </header>
+
+        <card className='uploadCard'> item</card>
+        <nav>
+          <button type="button" className="move-button">
+            move
+          </button>
+        </nav>
+      </aside>
+
+      <main className="canvas-container">
+      <Canvas camera={{ position: [5, 5, 10], fov: 30 }}>
+        <OrbitControls enableZoom={true} enablePan={false} minDistance={5} maxDistance={20}/>
         <ambientLight intensity={2} />
-        <axesHelper args={[5]}/>
-        <directionalLight position={[5, 5, 2]}/>
-          <InfinityCube/>
+        <axesHelper args={[5]} />
+        <directionalLight position={[5, 5, 2]} />
+        <InfinityCube />
       </Canvas>
+      </main>  
     </div>
   )
 }
@@ -57,11 +71,34 @@ const movements = {
   }
 }
 
+/*
+Set up on click event listener to trigger rotation
+When the button is clicked, it will rotate the cubes in the specified direction and then pause animation.
+Animation will resume when the button is clicked again and the cubes will rotate differently based on their position in the group.
+*/
+
+
+
 function InfinityCube() {
   var cubeRefs = useRef([]);
   var groupRef = useRef();
+  
+ 
+  /*
+ useEffect(() => {
+  animate(
+    cubeRefs.current[7].rotation,
+    { z: -Math.PI }, // 180 degrees in radians
+    { duration: 3, 
+      repeat: 0,
+      ease: "easeinout" }
+  );
 
-  useEffect(() => {
+ }, []);
+
+  */
+
+ useEffect(() => {
     if (cubeRefs.current[7] || cubeRefs.current[8]) {
       animate(
         cubeRefs.current[7].rotation,
@@ -72,24 +109,22 @@ function InfinityCube() {
       );
       animate(
       cubeRefs.current[7].position,
-      { x: 1.5, y: -.5 }, // Target coordinates
+      { x: 1.5, y: -.5 }, 
       { duration: 3, ease: "easeinout" }
      );
      
-     animate(
-      cubeRefs.current[3].rotation,
-      { z: -Math.PI }, // 180 degrees in radians
-      { duration: 3, 
-        repeat: 0,
-        ease: "easeinout" }
-    );
-    animate(
-    cubeRefs.current[3].position,
-    { x: 1.5, y: -.5 }, // Target coordinates
-    { duration: 3, ease: "easeinout" }
-   );
-
-
+      animate(
+        cubeRefs.current[3].rotation,
+        { z: -Math.PI }, // 180 degrees in radians
+        { duration: 3, 
+          repeat: 0,
+          ease: "easeinout" }
+      );
+      animate(
+        cubeRefs.current[3].position,
+        { x: 1.5, y: -.5 }, 
+        { duration: 3, ease: "easeinout" }
+      );
     }
   
   }, []);
@@ -148,7 +183,6 @@ function Cube ({id, position, cubeRef} ) {
 
 //how to rotate based of on the cube's position in the group?
 function rotateCube(meshCube) {
-
-
 }
+
 export default App;

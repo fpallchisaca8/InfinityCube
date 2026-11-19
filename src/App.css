@@ -3,11 +3,45 @@
   position: absolute;
   height: 100%;
   width: 100%;
+
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
 }
 
-.rotate-button {
-  position: relative;
-  left: 90%;
-  top: 90%;
-  color: rgb(121, 88, 241);
+.sidebar {
+  height: 100%;
+  background-color: #f2f3f6;
+  color: #111827;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
 }
+
+.canvas-container {
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.uploadCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 70%;
+  height: 20%;
+  padding: 20px;
+  outline: #111827;
+}
+
+
+.button {
+  position: relative;
+  left: 80%;
+  top: 90%;
+  cursor: pointer;
+}
+
